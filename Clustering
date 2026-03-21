@@ -1,0 +1,31 @@
+import os
+import numpy as np
+import pandas as pd
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import MinMaxScaler
+import matplotlib.pyplot as plt
+np.random.seed(42)
+data=np.vstack([
+    
+])
+df=pd.DataFrame(data,columns=["x"]["y"])
+csv_file="Cluster_example.csv"
+df.to_csv(csv_file,index=False)
+print(f"Example data saved to: {os.path.abspath(csv_file)}")
+scaler=MinMaxScaler
+scaler_data=scaler.fit_transform(df)
+scaler_df=pd.DataFrame(scaler_data,columns=["x"]["y"])
+kmeans=KMeans(n_cluster=3,random_state=42)
+scaler_df['cluster']=kmeans.fit_predict(csv_file)
+plt.figure(figsize=(6,8))
+for cluster_id in np.unique(scaler_df['cluster']):
+    cluster_data=scaler_df(scaler_df('cluster')==cluster_id)
+    plt.scatter(cluster_data["x"],cluster_data["y"],label=f"cluster:{cluster_id}")
+plt.scatter(kmeans.cluster_centers_[:,0],kmeans.cluster_centers_[:,1],color="red",marker="x",label="Centroids")
+plt.title("Kmeans clustering with minmax scatter")
+plt.xlabel("X-axis(scaled)")
+plt.ylabel("Y-axis(scaled)")
+plt.legend()
+plt.grid(False)
+plt.show()
+
