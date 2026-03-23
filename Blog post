@@ -1,0 +1,27 @@
+blog_posts = []
+num_posts = int(input("Enter the number of blog posts: "))
+
+for i in range(num_posts):
+    post = {}
+    print(f"\nEnter details for blog post {i+1}:")
+    post['Photos'] = int(input("Number of Photos: "))
+    post['Comments'] = int(input("Number of Comments: "))
+    post['Shares'] = int(input("Number of Shares: "))
+
+    likes = input("Number of Likes (Press Enter if no likes): ")
+    if likes:
+        post['Likes'] = int(likes)
+    
+    blog_posts.append(post)
+
+total_likes = 0
+
+for post in blog_posts:
+    try:
+        total_likes += post['Likes']
+    except KeyError:
+        post['Likes'] = 0
+        total_likes += post['Likes']
+
+print("BLOG DETAILS :",blog_posts)
+print(f"\nTotal likes: {total_likes}")
