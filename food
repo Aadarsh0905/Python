@@ -1,0 +1,11 @@
+food = input("Enter a list of words separated by spaces: ").split()
+
+fifth = []
+
+for x in food:
+    try:
+        fifth.append(x[4])
+    except IndexError:
+        pass
+
+print(fifth)
