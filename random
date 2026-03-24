@@ -1,0 +1,14 @@
+import random
+a = random.randrange(0,10,3)
+b = random.randint(0,6)
+c = random.randint(5,9)
+print(a,b,c)
+
+from datetime import datetime,timedelta
+def ran_date(start,end):
+    delta = end - start
+    random_days = random.randint(1,delta.days-1)
+    return start + timedelta(days = random_days)
+start = datetime(2012,2,16)
+end = datetime(2019,2,18)
+print(ran_date(start,end))
