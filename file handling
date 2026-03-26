@@ -1,0 +1,31 @@
+import os
+
+print("Step 1: Create the file 'data.txt'")
+
+with open('data.txt', 'w') as file:
+    file.write("This is a sample text file."+"\n")
+    file.write("WE ARE GOING TO CHECK TRY EXCEPT ERROR HANDLING PART")
+
+print("Step 2: Try to read the file.")
+
+try:
+    with open('data.txt', 'r') as file:
+        content = file.read()
+        print("File content:")
+        print(content)
+except FileNotFoundError:
+    print("File not found. Please ensure that 'data.txt' exists.")
+
+print("Step 3: Delete the file.")
+
+os.remove('data.txt')
+print("'data.txt' has been deleted.")
+
+print("Step 4: Try reading the deleted file")
+
+try:
+    with open('data.txt', 'r') as file:
+        content = file.read()
+        print(content)
+except FileNotFoundError:
+    print("File not found. The file has been deleted successfully.")
