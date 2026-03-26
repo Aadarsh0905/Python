@@ -1,0 +1,50 @@
+def logic_input(user_input):
+    parts = user_input.split()
+
+    if len(parts) != 3:
+        raise Exception("Input must consist of three elements: a number, an operator, and another number.")
+    
+    num1_str, operator, num2_str = parts
+    
+    try:
+        num1 = float(num1_str)
+    except ValueError:
+        raise Exception(f"Invalid first number: '{num1_str}'")
+    
+    if operator not in ['+', '-', '/', '*', '%', '**']:
+        raise Exception(f"Invalid operator: '{operator}'")
+    
+    try:
+        num2 = float(num2_str)
+    except ValueError:
+        raise Exception(f"Invalid second number: '{num2_str}'")
+    
+    return num1, operator, num2
+
+def calculate(num1, operator, num2):
+    if operator == '+':
+        return num1 + num2
+    elif operator == '-':
+        return num1 - num2
+    elif operator == '/':
+        return num1 / num2
+    elif operator == '*':
+        return num1 * num2
+    elif operator == '**':
+        return num1 ** num2
+    elif operator == '%':
+        return num1 % num2
+
+if __name__ == "__main__":
+    try:
+
+        user_input = input("Enter a Equation with Space (e.g., 1 + 1) : ")
+        
+        num1, operator, num2 = logic_input(user_input)
+        
+        result = calculate(num1, operator, num2)
+        
+        print(f"Result: {result}")
+        
+    except Exception as e:
+        print(f"Error: {e}")
